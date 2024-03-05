@@ -1,10 +1,9 @@
 import TabBar from "@/ui/tab-bar";
 
-export default async function Page( {  } ) {
+export default function Page() {
     return (
         <div>
-            <p>Narrator</p>
-
+            <p>Settings</p>
         </div>
     )
-} 
+}

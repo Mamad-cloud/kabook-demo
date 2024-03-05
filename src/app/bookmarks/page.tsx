@@ -1,12 +1,9 @@
 import TabBar from "@/ui/tab-bar";
 
-export default function page(  ) {
-    
-
+export default function Page() {
     return (
         <>
-            <p>Library</p>
+            <p>bookMarks</p>
         </>
     )
-
 }
