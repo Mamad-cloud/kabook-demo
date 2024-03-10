@@ -18,12 +18,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={kurdish_sans.className}>
         <main dir="rtl" className="flex w-full min-h-screen flex-col md:flex-row">
-          <div className="flex flex-col">
+          <div className="flex flex-col md:w-[260px]">
             <TabBar />
           </div>
           <div className="flex flex-col w-full">
             {children}
           </div>
+          <div className="h-40"></div>
         </main>
       </body>
     </html>

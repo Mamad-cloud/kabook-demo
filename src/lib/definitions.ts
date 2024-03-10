@@ -1,3 +1,11 @@
+export type Category = {
+    id: number,
+    name: string,
+    slug: string,
+    color: string,
+    
+}
+
 export type Book = {
     id: number,
     title: string,
@@ -19,6 +27,8 @@ export type BookDetails = {
     publisherID: string,
     datePublished: string,
     numberOfPages: number,
+    color1: string,
+    color2: string
 }
 
 export type Review = {
