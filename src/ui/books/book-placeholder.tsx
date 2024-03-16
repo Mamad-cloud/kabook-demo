@@ -16,7 +16,7 @@ export default function BookPlaceholder({ imgSrc, alt, color1, color2 }: { imgSr
             <div className="w-[2px] bg-[#000000]" ></div>
             <div className="w-[2px] bg-[#555555]"></div>
             <div className="flex grow bg-[#404040] rounded-l-lg overflow-clip justify-center items-center "  style={{ backgroundColor: color1}}>
-                {imgSrc && alt ? <Image src={imgSrc} alt={alt} width={150} height={200} /> : null}
+                {imgSrc && alt ? <Image src={imgSrc} alt={alt} width={250} height={350} /> : null}
                 
             </div>
 

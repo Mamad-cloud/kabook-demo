@@ -19,12 +19,16 @@ export default async function Page() {
                 <Header />
             </div>
             <div className="flex flex-col mb-8 w-full">
-                <h2 className="text-xl mb-3">علاقه مندی ها</h2>
+                <h2 className="text-xl mb-3">سبد خرید</h2>
                 <hr className="w-full opacity-20"/>
             </div>
 
-            <div className="">
+            <div className="mb-8">
                 <BookItem2Container books={userBookmarkedBooks}/>
+            </div>
+
+            <div className="flex flex-col w-full justify-center items-center">
+                <button className="w-full rounded-2xl p-7 bg-[#129938]">تکمیل خرید</button>
             </div>
         </main>
     )

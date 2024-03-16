@@ -4,9 +4,11 @@ import "./globals.css";
 import TabBar from "@/ui/tab-bar";
 
 
+
 export const metadata: Metadata = {
   title: "kabook-demo",
-  description: "",
+  description: "this is the demo for the soon to be Kabook app written in nextjs",
+  manifest: "/manifest.json"
 };
 
 export default function RootLayout({
@@ -18,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={kurdish_sans.className}>
         <main dir="rtl" className="flex w-full min-h-screen flex-col md:flex-row">
-          <div className="flex flex-col md:w-[260px]">
+          <div className="flex flex-col">
             <TabBar />
           </div>
           <div className="flex flex-col w-full">

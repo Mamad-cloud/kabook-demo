@@ -37,8 +37,10 @@ export default function Search({ placeholder }: { placeholder: string }) {
                 placeholder={placeholder}
                 defaultValue={searchParams.get('query')?.toString()}
             />
-            <Link href={`/search?${searchParams.toString()}`} className='flex justify-center items-center h-[50px] w-[50px] rounded-full bg-[#3A3A3A]  text-[#fafafa]'>
-                <MagnifyingGlassIcon className=" h-[20px] w-[20px] " />
+            <Link href={`/search?${searchParams.toString()}`} >
+                <div className='flex justify-center items-center h-[50px] w-[50px] rounded-full bg-[#3A3A3A]  text-[#fafafa]'>
+                    <MagnifyingGlassIcon className=" h-[20px] w-[20px] " />
+                </div>
             </Link>
         </div>
     );

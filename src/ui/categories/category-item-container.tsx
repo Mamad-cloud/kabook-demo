@@ -11,7 +11,7 @@ export default function CategoryItemContainer({categories}: {categories: Categor
     return (
         <div className="flex flex-row w-full items-start gap-8 overflow-auto snap-x touch-pan-x no-scrollbar">
             <AllCategories />
-            {categories.map( category => <CategoryItem key={category.id} id={category.id} color={category.color} name={category.name} slug={category.slug} />)}
+            {categories.map( category => <CategoryItem key={category.id} {...category} />)}
         </div>
     )
 }

@@ -1,85 +1,55 @@
 'use server'
 
-import { Book, BookDetails, Category } from "@/lib/definitions"
 import { unstable_noStore as noStore } from "next/cache"
+
+import {BookDetails, Category, User } from "@/lib/definitions"
+import { categories, books, epubURLs, bookmarked, purchased, audioURLs} from '@/lib/placeholder-data'
 
 // TODO: implement the filtering according to categories and bookId
 // TODO: look into graphQL
 
-const categories: Category[] = [
-    {
-        id:1,
-        name: 'تخیلی',
-        color: "#551722",
-        slug: 'fiction'
-    },
-    {
-        id:2,
-        name: 'رمان',
-        color: '#272727',
-        slug: 'novel'
-    }, 
-    {
-        id:3,
-        name: 'شعر',
-        color: '#162C4E',
-        slug: 'poetry'
-    }, 
-]
 
-const books: BookDetails[] = [
-    {
-        id: 1,
-        title: "title",
-        author: "author",
-        img: "/pic.png",
-        slug: 'slug',
-        desc: "description",
-        price: 999999,
-        categories: ['fiction'],
-        genre: 'horror',
-        datePublished: '2022/12/12',
-        numberOfPages: 999,
-        publisherID: '123',
-        color1: '#662E2E',
-        color2: '#EB6767'
-    },
+export async function addToCart(formData: FormData) {
 
-    {
-        id: 2,
-        title: "title2",
-        author: "author2",
-        img: "/pic.png",
-        slug: 'slug2',
-        desc: "description2",
-        price: 999999,
-        categories: ['novel'],
-        genre: 'horror',
-        datePublished: '2022/12/12',
-        numberOfPages: 999,
-        publisherID: '1232',
-        color1: '#6F543C',
-        color2: '#6F543C'
-    },
+}
 
-    {
-        id: 3,
-        title: "title3",
-        author: "author3",
-        img: "/pic.png",
-        slug: 'slug3',
-        desc: "description3",
-        price: 999999,
-        categories: [''],
-        genre: 'horror',
-        datePublished: '2022/12/12',
-        numberOfPages: 999,
-        publisherID: '1232',
-        color1: '#AFAFAF',
-        color2: '#AFAFAF'
-    },
+export async function fetchBookAudioURL(slug: string) {
+    const book = await fetchBookDetails(slug)
+    //console.log(book, __filename)
+    return await new Promise<string>((res) => {
+        setTimeout(() => {
+            if ( book ) 
+            {
+                const audioURL = audioURLs.find(audioURL => audioURL.bookId === book.id)
+                if ( audioURL ) {
+                    res(audioURL.url)
+                } else {
+                    throw new Error(`url does not exist for ${book.title}`)
+                }
+            } 
+        }, 200)
+    })
 
-]
+}
+
+export async function fetchBookEpubURL(slug: string) {
+    const book = await fetchBookDetails(slug)
+    //console.log(book, __filename)
+    return await new Promise<string>((res) => {
+        setTimeout(() => {
+            if ( book ) 
+            {
+                const epubUrl = epubURLs.find(ePubURL => ePubURL.bookId === book.id)
+                if ( epubUrl ) {
+                    res(epubUrl.url)
+                } else {
+                    throw new Error(`url does not exist for ${book.title}`)
+                }
+            } 
+        }, 200)
+    })
+
+}
 
 export async function searchBooks(category?: string, query?: string) {
     const queried = await queryBooks(query)
@@ -130,7 +100,7 @@ export async function fetchCategories() {
 export async function fetchFeaturedBooks(category: string) {
     //noStore()
     
-    console.log(process.env.REST_API_URL)
+    //console.log(process.env.REST_API_URL)
 
     // artificially delay response for emulating server
     const data = await new Promise<BookDetails[]>((res) => { 
@@ -184,11 +154,37 @@ export async function fetchBookDetails(slug: string) {
 }
 
 // TODO: implement this two
-export async function fetchUserPurchasedBooks() {
-     // ...
+export async function fetchUserPurchasedBooks(user: User) {
+    return await new Promise<BookDetails[]>((res) => {
+        setTimeout(() => {
+            const purchases = purchased.filter( bookmark => bookmark.user_id === user.id)
+            const userPurchases: BookDetails[] = []
+            
+            purchases.forEach( purchase => {
+                const _book = books.find(book => book.id === purchase.book_id)
+                if ( _book ) userPurchases.push(_book)
+            })
+            
+            res(userPurchases)
+
+        }, 100)
+    })
 } 
 
 
-export async function fetchUserBookmarkedBooks() {
-    // ...
+export async function fetchUserBookmarkedBooks(user: User) {
+    return await new Promise<BookDetails[]>((res) => {
+        setTimeout(() => {
+            const bookmarks = bookmarked.filter( bookmark => bookmark.user_id === user.id)
+            const userBookmarks: BookDetails[] = []
+            
+            bookmarks.forEach( bookmark => {
+                const _book = books.find(book => book.id === bookmark.book_id)
+                if ( _book ) userBookmarks.push(_book)
+            })
+            
+            res(userBookmarks)
+
+        }, 100)
+    })
 } 

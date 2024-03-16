@@ -8,7 +8,7 @@ import Link from "next/link"
 
 // TODO: optimistacally update the UI when the category is changed and display skeletons
 
-export default function Category({name, color, slug }: Category) {
+export default function Category({name, color, slug, imgUrl, alt }: Category) {
     
     const searchParams = useSearchParams()
     const category = searchParams.get('category')
@@ -20,7 +20,7 @@ export default function Category({name, color, slug }: Category) {
         <div className="flex flex-col w-10">
             <Link href={`?${newParams.toString()}`}>
                 <div className="relative grid w-full h-[50px]">
-                    <CategoryPlaceholder color={color} />
+                    <CategoryPlaceholder alt={alt} imgSrc={imgUrl} color={color} />
                 </div>
                 <div className="flex mt-2 justify-center">
                     <h4 className={clsx("opacity-100", { "opacity-40": category !== slug })}>{name}</h4>

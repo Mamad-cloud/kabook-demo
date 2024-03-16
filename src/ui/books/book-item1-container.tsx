@@ -1,5 +1,5 @@
 import {  BookDetails } from "@/lib/definitions";
-import BookItem1 from "./book-item1";
+import BookItem1 from "@/ui/books/book-item1";
 
 export default function BookItem1Container( { books } : {books: BookDetails[]} ) {
     return ( 
