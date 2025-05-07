@@ -1,6 +1,6 @@
 'use server'
 
-import { unstable_noStore as noStore } from "next/cache"
+// import { unstable_noStore as noStore } from "next/cache"
 
 import {BookDetails, Category, User } from "@/lib/definitions"
 import { categories, books, epubURLs, bookmarked, purchased, audioURLs} from '@/lib/placeholder-data'
@@ -90,6 +90,7 @@ export async function queryBooks(query?: string) {
 export async function fetchCategories() {
     // noStore()
 
+    //const data = await fetch('http://kabook.org/acf/categories/')
     return await new Promise<Category[]> ((res) => {
         setTimeout(() => {
             res(categories)
