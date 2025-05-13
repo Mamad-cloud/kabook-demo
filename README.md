@@ -15,8 +15,11 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![home](https://github.com/user-attachments/assets/1b115b0f-84f0-4548-bc83-334324b76896)
+![product](https://github.com/user-attachments/assets/6ddd750e-68e1-4c41-84ba-cb2a0e4f75d3)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
@@ -34,3 +37,6 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
